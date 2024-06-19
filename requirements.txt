@@ -4,3 +4,4 @@ tqdm
 torchvision
 gdown
 natsort
+torch torchvision torchaudio cudatoolkit=11.2
