@@ -96,6 +96,9 @@ def get_discriminator_block(input_dim, output_dim):
     )
 
 # %%
+
+
+# %%
 # build the discriminator class
 class Discriminator(nn.Module):
     def __init__(self, im_dim=12288, hidden_dim=64):
@@ -186,10 +189,12 @@ def get_disc_loss(gen, disc, criterion, real, num_images, z_dim, device):
 # UNQ_C7 (UNIQUE CELL IDENTIFIER, DO NOT EDIT)
 # GRADED FUNCTION: get_gen_loss
 def get_gen_loss(gen, disc, criterion, num_images, z_dim, device):
+    #### START CODE HERE ####
     fake_noise = get_noise(num_images, z_dim, device=device)
     fake = gen(fake_noise)
     disc_fake_pred = disc(fake)
     gen_loss = criterion(disc_fake_pred, torch.ones_like(disc_fake_pred))
+    #### END CODE HERE ####
     return gen_loss
 
 # %%
@@ -199,7 +204,7 @@ import torch
 # Define the checkpoint file path
 checkpoint_path = "checkpoint.pth"
 
-# Initialize epoch from checkpoint if it exists
+# initialize epoch from checkpoint if it exists
 start_epoch = 0
 if os.path.exists(checkpoint_path):
     print("Loading checkpoint...")
@@ -290,9 +295,3 @@ for epoch in range(start_epoch, n_epochs):
     print(f"Checkpoint saved at epoch {epoch + 1}")
 
 print("Training complete.")
-
-
-# %%
-
-
-
